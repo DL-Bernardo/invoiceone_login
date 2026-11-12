@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'InvoiceOne Identity Experience Login',
-    'version': '15.0.1.0.0',
+    'version': '16.0.1.0.0',
     'category': 'Website',
     'summary': 'Modern Split-Screen Corporate Login Experience with Dynamic Company NIF, License Status & Homologation Banner',
     'description': """
