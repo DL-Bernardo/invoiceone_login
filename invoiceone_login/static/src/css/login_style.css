@@ -1,0 +1,479 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.invoiceone_login_wrapper {
+    display: flex;
+    min-height: 100vh;
+    height: 100vh;
+    background: #ffffff;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Opção 2: Fita Diagonal de Canto (Corner Ribbon) */
+.invoiceone_login_wrapper .env_corner_ribbon {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 160px;
+    height: 160px;
+    overflow: hidden;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.invoiceone_login_wrapper .env_corner_ribbon span {
+    position: absolute;
+    display: block;
+    width: 230px;
+    padding: 7px 0;
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-align: center;
+    left: -58px;
+    top: 34px;
+    transform: rotate(-45deg);
+    border-top: 1px solid rgba(255, 255, 255, 0.35);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Opção 1: Faixa/Card de Alerta no Topo do Formulário */
+.invoiceone_login_wrapper .env_alert_banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-left: 4px solid #f59e0b;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 2.2vh;
+    box-shadow: 0 2px 6px rgba(245, 158, 11, 0.08);
+}
+
+.invoiceone_login_wrapper .env_alert_icon {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 8px;
+    background: rgba(245, 158, 11, 0.15);
+    color: #d97706;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+}
+
+.invoiceone_login_wrapper .env_alert_content {
+    display: flex;
+    flex-direction: column;
+}
+
+.invoiceone_login_wrapper .env_alert_title {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #92400e;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.invoiceone_login_wrapper .env_alert_desc {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: #b45309;
+    margin-top: 2px;
+    line-height: 1.3;
+}
+
+.invoiceone_login_wrapper .login_split_container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+}
+
+.invoiceone_login_wrapper .login_functional_panel {
+    flex: 1;
+    padding: 2.5vh 4vw 3.5vh 4vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    height: 100%;
+    min-height: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+@media (max-width: 992px) {
+    .invoiceone_login_wrapper .login_functional_panel {
+        padding: 2.5rem 1.5rem;
+        overflow-y: auto;
+    }
+}
+
+.invoiceone_login_wrapper .login_form_box {
+    max-width: 420px;
+    width: 100%;
+    margin: auto 0;
+}
+
+.invoiceone_login_wrapper .login_logo {
+    margin-bottom: 2vh;
+}
+
+.invoiceone_login_wrapper .login_welcome_text {
+    margin-bottom: 1.5vh;
+}
+
+.invoiceone_login_wrapper .login_welcome_text h1 {
+    font-size: clamp(1.5rem, 3.2vh, 1.9rem);
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 0.3vh;
+    letter-spacing: -0.03em;
+}
+
+.invoiceone_login_wrapper .login_welcome_text p {
+    color: #4b5563;
+    font-size: clamp(0.8rem, 1.6vh, 0.88rem);
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Override Odoo Default Form Styling */
+.invoiceone_login_wrapper .odoo-form-wrapper form .form-group,
+.invoiceone_login_wrapper .odoo-form-wrapper form .mb-3 {
+    margin-bottom: 1.2vh !important;
+}
+
+.invoiceone_login_wrapper .odoo-form-wrapper form .form-group label,
+.invoiceone_login_wrapper .odoo-form-wrapper form .mb-3 label,
+.invoiceone_login_wrapper .odoo-form-wrapper form .form-group .col-form-label,
+.invoiceone_login_wrapper .odoo-form-wrapper form .mb-3 .col-form-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin-bottom: 0.3vh;
+    display: block;
+    letter-spacing: 0.05em;
+}
+
+.invoiceone_login_wrapper .odoo-form-wrapper form .form-group input.form-control,
+.invoiceone_login_wrapper .odoo-form-wrapper form .mb-3 input.form-control {
+    height: clamp(36px, 4.2vh, 42px);
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 0.4rem 0.8rem;
+    font-size: clamp(0.8rem, 1.6vh, 0.9rem);
+    color: #111827;
+    box-shadow: none;
+    background-size: 14px;
+    background-repeat: no-repeat;
+    background-position: 15px center;
+    transition: all 0.15s ease-in-out;
+    background-color: #ffffff;
+}
+
+.invoiceone_login_wrapper .odoo-form-wrapper form .form-group input.form-control:focus,
+.invoiceone_login_wrapper .odoo-form-wrapper form .mb-3 input.form-control:focus {
+    border-color: #2563eb;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.invoiceone_login_wrapper .odoo-form-wrapper form .form-group input.form-control::placeholder,
+.invoiceone_login_wrapper .odoo-form-wrapper form .mb-3 input.form-control::placeholder {
+    color: #9ca3af;
+}
+
+/* Inject envelope icon into username/email input */
+.invoiceone_login_wrapper .odoo-form-wrapper form input[name="login"] {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="%239ca3af" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>');
+    padding-left: 45px !important;
+}
+
+/* Inject lock icon into password input */
+.invoiceone_login_wrapper .odoo-form-wrapper form input[name="password"] {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="%239ca3af" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>');
+    padding-left: 45px !important;
+}
+
+/* Password Reset Link Alignment */
+.invoiceone_login_wrapper .odoo-form-wrapper form .d-flex.justify-content-between.align-items-center,
+.invoiceone_login_wrapper .odoo-form-wrapper form .d-flex.justify-content-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.3vh;
+}
+
+.invoiceone_login_wrapper .odoo-form-wrapper form .d-flex.justify-content-between.align-items-center label,
+.invoiceone_login_wrapper .odoo-form-wrapper form .d-flex.justify-content-between label,
+.invoiceone_login_wrapper .odoo-form-wrapper form .d-flex.justify-content-between.align-items-center .form-check-label,
+.invoiceone_login_wrapper .odoo-form-wrapper form .d-flex.justify-content-between .form-check-label {
+    margin-bottom: 0;
+    font-size: clamp(0.7rem, 1.6vh, 0.8rem);
+    color: #4b5563;
+    font-weight: 500;
+}
+
+.invoiceone_login_wrapper .odoo-form-wrapper form .d-flex.justify-content-between.align-items-center a,
+.invoiceone_login_wrapper .odoo-form-wrapper form .d-flex.justify-content-between a {
+    font-size: clamp(0.6rem, 1.5vh, 0.68rem);
+    font-weight: 700;
+    color: #2563eb;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+}
+
+.invoiceone_login_wrapper .odoo-form-wrapper form .d-flex.justify-content-between.align-items-center a:hover,
+.invoiceone_login_wrapper .odoo-form-wrapper form .d-flex.justify-content-between a:hover {
+    color: #1d4ed8;
+}
+
+.invoiceone_login_wrapper .odoo-form-wrapper form .btn-primary {
+    background-color: #2563eb !important;
+    border-color: #2563eb !important;
+    height: clamp(36px, 4.2vh, 42px);
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: clamp(0.8rem, 1.6vh, 0.95rem);
+    width: 100%;
+    margin-top: 1vh;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2), 0 2px 4px -1px rgba(37, 99, 235, 0.1);
+    transition: all 0.2s ease;
+    color: white;
+}
+
+.invoiceone_login_wrapper .odoo-form-wrapper form .btn-primary:hover {
+    background-color: #1d4ed8 !important;
+    border-color: #1d4ed8 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 8px -1px rgba(37, 99, 235, 0.3), 0 3px 6px -1px rgba(37, 99, 235, 0.15);
+}
+
+.invoiceone_login_wrapper .odoo-form-wrapper form .btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Clean Odoo default database selectors and card styles */
+.invoiceone_login_wrapper .odoo-form-wrapper .card {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+.invoiceone_login_wrapper .odoo-form-wrapper .card-body {
+    padding: 0 !important;
+}
+
+/* Right Side: Identity Panel */
+.invoiceone_login_wrapper .login_identity_panel {
+    flex: 1.25;
+    background: radial-gradient(circle at 10% 20%, #1e40af 0%, #1e3a8a 50%, #0f172a 100%);
+    position: relative;
+    padding: 6vh 4.5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #ffffff;
+    overflow: hidden;
+    box-sizing: border-box;
+    height: 100%;
+    min-height: 100%;
+}
+
+@media (max-width: 992px) {
+    .invoiceone_login_wrapper .login_identity_panel {
+        display: none;
+    }
+}
+
+/* Abstract Grid Background Overlay */
+.invoiceone_login_wrapper .login_identity_panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.8;
+    z-index: 1;
+}
+
+.invoiceone_login_wrapper .login_identity_panel .identity_overlay {
+    position: absolute;
+    inset: 0;
+    background: url('/invoiceone_login/static/src/img/lifestyle.jpg') no-repeat center;
+    background-size: cover;
+    opacity: 0.12;
+    mix-blend-mode: overlay;
+    z-index: 1;
+}
+
+.invoiceone_login_wrapper .login_identity_panel .identity_header {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.invoiceone_login_wrapper .login_identity_panel .identity_header .pill-badge {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.4rem 1.2rem;
+    border-radius: 9999px;
+    font-size: clamp(0.65rem, 1.6vh, 0.72rem);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.invoiceone_login_wrapper .login_identity_panel .identity_header .cert-text {
+    font-size: clamp(0.6rem, 1.5vh, 0.68rem);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.05em;
+}
+
+.invoiceone_login_wrapper .login_identity_panel .identity_content {
+    position: relative;
+    z-index: 2;
+}
+
+.invoiceone_login_wrapper .login_identity_panel .identity_content h2 {
+    font-size: clamp(2.2rem, 5.5vh, 4rem);
+    font-weight: 400;
+    line-height: 1.15;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.invoiceone_login_wrapper .login_identity_panel .identity_content h2 .highlight {
+    font-weight: 700;
+    color: #60a5fa; /* Cyan/Light Blue */
+}
+
+.invoiceone_login_wrapper .login_identity_panel .identity_footer {
+    position: relative;
+    z-index: 2;
+}
+
+.invoiceone_login_wrapper .login_identity_panel .identity_footer .quote {
+    font-size: clamp(0.95rem, 2.2vh, 1.2rem);
+    font-style: italic;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 2.5vh;
+    line-height: 1.6;
+}
+
+.invoiceone_login_wrapper .login_identity_panel .identity_footer .author {
+    display: flex;
+    align-items: center;
+}
+
+.invoiceone_login_wrapper .login_identity_panel .identity_footer .author .author_icon {
+    width: clamp(36px, 5vh, 44px);
+    height: clamp(36px, 5vh, 44px);
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background-color: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.8rem, 1.8vh, 0.95rem);
+    font-weight: 500;
+    color: #60a5fa;
+}
+
+.invoiceone_login_wrapper .login_identity_panel .identity_footer .author .author_details {
+    display: flex;
+    flex-direction: column;
+}
+
+.invoiceone_login_wrapper .login_identity_panel .identity_footer .author .author_details strong {
+    font-size: clamp(0.8rem, 1.8vh, 0.95rem);
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.invoiceone_login_wrapper .login_identity_panel .identity_footer .author .author_details span {
+    font-size: clamp(0.6rem, 1.5vh, 0.72rem);
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-top: 0.1rem;
+}
+
+/* Pillars Carousel */
+.invoiceone_login_wrapper .pillars_carousel_wrapper {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.invoiceone_login_wrapper .pillars_slides_container {
+    display: grid;
+    grid-template-columns: 1fr;
+    flex: 1;
+    padding-right: 1.5rem;
+}
+
+.invoiceone_login_wrapper .pillar_slide {
+    grid-area: 1 / 1;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity 0.55s ease, transform 0.55s ease, visibility 0.55s;
+    pointer-events: none;
+}
+
+.invoiceone_login_wrapper .pillar_slide.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.invoiceone_login_wrapper .carousel_dots .dot {
+    width: 8px;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.35s ease;
+}
+
+.invoiceone_login_wrapper .carousel_dots .dot:hover {
+    background-color: rgba(255, 255, 255, 0.65);
+}
+
+.invoiceone_login_wrapper .carousel_dots .dot.active {
+    width: 24px;
+    background-color: #ffffff;
+}

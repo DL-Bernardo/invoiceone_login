@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="login_layout" inherit_id="web.login_layout" name="InvoiceOne Login Layout">
+        <!-- Load the premium Inter font and page title -->
+        <xpath expr="//div[hasclass('container')]" position="before">
+            <t t-set="title" t-value="'InvoiceOne'"/>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"/>
+        </xpath>
+        <xpath expr="//div[hasclass('container')]" position="replace">
+            <div class="invoiceone_login_wrapper">
+                <!-- Opção 2: Fita Diagonal de Canto (Corner Ribbon) -->
+                <div class="env_corner_ribbon">
+                    <span>HOMOLOGAÇÃO</span>
+                </div>
+
+                <div class="login_split_container">
+                    <!-- Left Side: Functional Panel -->
+                    <div class="login_functional_panel">
+                        <!-- Top spacer to keep form centered - reduced to save height -->
+                        <div class="d-none d-md-block" style="height: 15px;"></div>
+                        
+                        <div class="login_form_box">
+                            <!-- Opção 1: Faixa/Card de Alerta no Topo do Formulário -->
+                            <div class="env_alert_banner">
+                                <div class="env_alert_icon">
+                                    <i class="fa fa-flask"></i>
+                                </div>
+                                <div class="env_alert_content">
+                                    <span class="env_alert_title">AMBIENTE DE TESTES / HOMOLOGAÇÃO</span>
+                                    <span class="env_alert_desc">Uso exclusivo para testes. Documentos sem validade fiscal.</span>
+                                </div>
+                            </div>
+
+                            <!-- Logo Brand with New Icon Image -->
+                            <div class="login_logo d-flex align-items-center gap-3">
+                                <img class="logo_icon" src="/invoiceone_login/static/src/img/icon_melhorado.jpg" alt="InvoiceOne Logo" style="width: 48px; height: 48px; border-radius: 10px; object-fit: cover;"/>
+                                <div class="logo_text d-flex flex-column">
+                                    <span class="logo_title" style="font-size: 1.35rem; font-weight: 700; color: #1f2937; line-height: 1.1; font-family: 'Inter', sans-serif;">InvoiceOne</span>
+                                    <span class="logo_subtitle" style="font-size: 0.65rem; font-weight: 600; color: #9ca3af; letter-spacing: 0.05em; margin-top: 0.1rem; font-family: 'Inter', sans-serif;">© DIGITALUB</span>
+                                </div>
+                            </div>
+                            
+                            <div class="login_welcome_text">
+                                <h1>Bem-vindo de volta.</h1>
+                                <p>Inicie sessão para gerir o seu negócio com foco.</p>
+                            </div>
+
+                            <!-- Odoo default form is rendered here -->
+                            <div class="odoo-form-wrapper">
+                                <t t-out="0"/>
+                            </div>
+                        </div>
+                        
+                        <!-- Left Panel Footer with integrated license details and company VAT - adjusted spacing -->
+                        <div class="login_functional_footer d-flex justify-content-between align-items-center w-100" style="max-width: 420px; font-size: 0.72rem; color: #9ca3af; font-weight: 600; font-family: 'Inter', sans-serif; border-top: 1px solid #f3f4f6; padding-top: 0.6rem; margin-top: 1vh;">
+                            <span>v15.1</span>
+                            
+                            <!-- Dynamic Contract Status linked with db_license_manage -->
+                            <t t-if="license_status">
+                                <span t-if="license_status == 'valid'" style="color: #10b981; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 4px;">
+                                    <i class="fa fa-shield"></i> Contrato Válido até <t t-out="license_expiry_date"/>
+                                </span>
+                                <span t-elif="license_status == 'warning'" style="color: #f59e0b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 4px;">
+                                    <i class="fa fa-exclamation-triangle"></i> Contrato Expira a <t t-out="license_expiry_date"/>
+                                </span>
+                                <span t-else="" style="color: #ef4444; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 4px;">
+                                    <i class="fa fa-ban"></i> Contrato Inativo
+                                </span>
+                            </t>
+                            <t t-else="">
+                                <span style="color: #10b981; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 4px;">
+                                    <i class="fa fa-shield"></i> Contrato Válido
+                                </span>
+                            </t>
+                            
+                            <!-- Pushes the dynamic VAT/NIF from the active company in the Odoo database -->
+                            <span>NIF: <t t-out="request.env and request.env.company and request.env.company.vat or ''"/></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Side: Identity Panel -->
+                    <div class="login_identity_panel">
+                        <div class="identity_overlay"></div>
+                        
+                        <!-- Top Header -->
+                        <div class="identity_header align-items-start">
+                            <div class="d-flex flex-column">
+                                <span class="pill-badge align-self-start">PRODUTIVIDADE &amp; FOCO</span>
+                                <br/>
+                                <!-- Dynamic Company Name in Uppercase below the focus pill -->
+                                <span class="text-uppercase fw-bold" style="font-size: 0.72rem; color: rgba(255, 255, 255, 0.9); letter-spacing: 0.08em; font-family: 'Inter', sans-serif; margin-top: 0.6rem; display: block;">
+                                    <t t-out="request.env and request.env.company and request.env.company.name and request.env.company.name.upper() or ''"/>
+                                </span>
+                            </div>
+                            <!-- Updated system certificate number -->
+                            <span class="cert-text">SISTEMA CERTIFICADO Nº FE/85/AGT/2025 <small style="font-size: 0.78em; font-weight: 500; text-transform: none; color: rgba(255, 255, 255, 0.7); margin-left: 4px;">Licença para teste</small></span>
+                        </div>
+
+                        <!-- Main Content -->
+                        <div class="identity_content">
+                            <h2>O seu tempo é<br/><span class="highlight">precioso</span>, use-o<br/>para crescer.</h2>
+                        </div>
+
+                        <!-- Footer / Pillars Carousel -->
+                        <div class="identity_footer">
+                            <div class="pillars_carousel_wrapper">
+                                <div class="pillars_slides_container">
+                                    <!-- Slide 1: Conformidade AGT -->
+                                    <div class="pillar_slide active" data-slide="0">
+                                        <p class="quote">"Com o InvoiceOne, deixámos de nos preocupar com a complexidade fiscal angolana. O sistema automatiza a conformidade com a AGT, permitindo-nos focar 100% na nossa estratégia comercial e no crescimento do negócio."</p>
+                                        <div class="author mt-4">
+                                            <div class="author_icon"><i class="fa fa-shield"></i></div>
+                                            <div class="author_details">
+                                                <strong>Conformidade Fiscal &amp; AGT</strong>
+                                                <span>FACTURAÇÃO ELECTRÓNICA &amp; SAF-T AO</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Slide 2: Controlo Financeiro -->
+                                    <div class="pillar_slide" data-slide="1">
+                                        <p class="quote">"Visão rigorosa e em tempo real sobre contas correntes, cobranças, retenções na fonte e fluxos de caixa. Toda a informação financeira centralizada para decisões rápidas e seguras."</p>
+                                        <div class="author mt-4">
+                                            <div class="author_icon"><i class="fa fa-line-chart"></i></div>
+                                            <div class="author_details">
+                                                <strong>Gestão Financeira 360°</strong>
+                                                <span>CONTAS CORRENTES, TESOURARIA &amp; IMPOSTOS</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Slide 3: Produtividade & Rapidez -->
+                                    <div class="pillar_slide" data-slide="2">
+                                        <p class="quote">"Da cotação ao recebimento em poucos cliques. Uma plataforma moderna, intuitiva e desenhada à medida da realidade empresarial de Angola para impulsionar a produtividade da sua equipa."</p>
+                                        <div class="author mt-4">
+                                            <div class="author_icon"><i class="fa fa-bolt"></i></div>
+                                            <div class="author_details">
+                                                <strong>Eficiência Operacional</strong>
+                                                <span>ALTA PERFORMANCE &amp; SEGURANÇA DE DADOS</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Carousel dots indicators -->
+                                <div class="carousel_dots d-flex gap-2 mb-2">
+                                    <span class="dot active" data-dot="0" onclick="window.setInvoiceOneSlide &amp;&amp; window.setInvoiceOneSlide(0)"></span>
+                                    <span class="dot" data-dot="1" onclick="window.setInvoiceOneSlide &amp;&amp; window.setInvoiceOneSlide(1)"></span>
+                                    <span class="dot" data-dot="2" onclick="window.setInvoiceOneSlide &amp;&amp; window.setInvoiceOneSlide(2)"></span>
+                                </div>
+                            </div>
+
+                            <script type="text/javascript">
+                                (function() {
+                                    var currentSlide = 0;
+                                    var totalSlides = 3;
+                                    var intervalId = null;
+
+                                    function showSlide(index) {
+                                        var slides = document.querySelectorAll('.invoiceone_login_wrapper .pillar_slide');
+                                        var dots = document.querySelectorAll('.invoiceone_login_wrapper .carousel_dots .dot');
+                                        if (!slides.length) return;
+                                        currentSlide = (index + totalSlides) % totalSlides;
+                                        slides.forEach(function(s, i) {
+                                            s.classList.toggle('active', i === currentSlide);
+                                        });
+                                        dots.forEach(function(d, i) {
+                                            d.classList.toggle('active', i === currentSlide);
+                                        });
+                                    }
+
+                                    function startAutoPlay() {
+                                        if (intervalId) clearInterval(intervalId);
+                                        intervalId = setInterval(function() {
+                                            showSlide(currentSlide + 1);
+                                        }, 6000);
+                                    }
+
+                                    window.setInvoiceOneSlide = function(index) {
+                                        showSlide(index);
+                                        startAutoPlay();
+                                    };
+
+                                    if (document.readyState === 'loading') {
+                                        document.addEventListener('DOMContentLoaded', startAutoPlay);
+                                    } else {
+                                        startAutoPlay();
+                                    }
+                                })();
+                            </script>
+                            
+                            <hr style="border-color: rgba(255,255,255,0.1); margin: 1.5rem 0 1rem 0;"/>
+                            
+                            <div class="d-flex justify-content-between align-items-center w-100" style="font-size: 0.65rem; color: rgba(255, 255, 255, 0.5); font-weight: 600; letter-spacing: 0.03em;">
+                                <span>© 2026 DIGITALUB TECNOLOGY</span>
+                                <span>CONTRATO LUB-ENT-991823</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+    <template id="brand_promotion_message" inherit_id="web.brand_promotion_message" name="InvoiceOne Brand Promotion Message">
+        <xpath expr="//t[@t-set='odoo_logo']" position="replace">
+            <t t-set="odoo_logo">
+                <a target="_blank" href="https://www.digitalub.com" class="fw-bold" style="color: #1f2937; text-decoration: none;">InvoiceOne</a>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="portal_record_sidebar" inherit_id="portal.portal_record_sidebar" name="InvoiceOne Portal Record Sidebar">
+        <xpath expr="//div[@id='sidebar_content']/div[hasclass('text-muted')]" position="replace">
+            <div class="d-none d-lg-block mt-5 small text-center text-muted">
+                Desenvolvido por <a target="_blank" href="https://www.digitalub.com" class="fw-bold" style="color: #1f2937; text-decoration: none;">InvoiceOne</a>
+            </div>
+        </xpath>
+    </template>
+</odoo>
